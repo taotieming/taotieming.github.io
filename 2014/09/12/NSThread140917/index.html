@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>多线程之NSThread | 陶铁明</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="##多线程之NSThread
+####一个NSThread对象就代表一条线程
+####创建、启动线程
+
+NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(run) object:nil];[thread start];// 线程一启动，就会在线程thread中执行self的run方法
+
+####主">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多线程之NSThread">
+<meta property="og:url" content="http://yoursite.com/2014/09/12/NSThread140917/index.html">
+<meta property="og:site_name" content="陶铁明">
+<meta property="og:description" content="##多线程之NSThread
+####一个NSThread对象就代表一条线程
+####创建、启动线程
+
+NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(run) object:nil];[thread start];// 线程一启动，就会在线程thread中执行self的run方法
+
+####主">
+<meta property="og:updated_time" content="2016-07-12T01:47:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="多线程之NSThread">
+<meta name="twitter:description" content="##多线程之NSThread
+####一个NSThread对象就代表一条线程
+####创建、启动线程
+
+NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(run) object:nil];[thread start];// 线程一启动，就会在线程thread中执行self的run方法
+
+####主">
+  
+    <link rel="alternate" href="/atom.xml" title="陶铁明" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">陶铁明</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">很明显你找的就是我这种人 一位前端工程狮的自白</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-NSThread140917" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/09/12/NSThread140917/" class="article-date">
+  <time datetime="2014-09-12T01:46:11.000Z" itemprop="datePublished">2014-09-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      多线程之NSThread
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##多线程之NSThread</p>
+<p>####一个NSThread对象就代表一条线程</p>
+<p>####创建、启动线程</p>
+<ul>
+<li>NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(run) object:nil];<br>[thread start];<br>// 线程一启动，就会在线程thread中执行self的run方法</li>
+</ul>
+<p>####主线程相关用法</p>
+<ul>
+<li>(NSThread *)mainThread; // 获得主线程</li>
+</ul>
+<ul>
+<li>(BOOL)isMainThread; // 是否为主线程</li>
+</ul>
+<ul>
+<li>(BOOL)isMainThread; // 是否为主线程</li>
+</ul>
+<ul>
+<li>[NSThread currentThread];</li>
+<li>(void)setName:(NSString *)name;</li>
+<li>(NSString *)name;</li>
+<li>(void)start;<br>// 进入就绪状态 -&gt; 运行状态。当线程任务执行完毕，自动进入死亡状态<br>阻塞（暂停）线程</li>
+</ul>
+<ul>
+<li>(void)sleepUntilDate:(NSDate *)date;</li>
+<li>(void)sleepForTimeInterval:(NSTimeInterval)ti;<br>// 进入阻塞状态</li>
+</ul>
+<p>强制停止线程</p>
+<ul>
+<li>(void)exit;<br>// 进入死亡状态</li>
+</ul>
+<p>####创建线程的几种方式</p>
+<ul>
+<li><p>创建线程后自动启动线程<br>[NSThread detachNewThreadSelector:@selector(run) toTarget:self withObject:nil];</p>
+</li>
+<li><p>隐式创建并启动线程<br>[self performSelectorInBackground:@selector(run) withObject:nil];</p>
+<pre><code>上述2种创建线程方式的优缺点
+优点：简单快捷
+缺点：无法对线程进行更详细的设置
+</code></pre></li>
+</ul>
+<p>####线程安全问题<br>@synchronized(锁对象) { // 需要锁定的代码  }<br>注意：锁定1份代码只用1把锁，用多把锁是无效的</p>
+<p>#####互斥锁的优缺点</p>
+<ul>
+<li>优点：能有效防止因多线程抢夺资源造成的数据安全问题</li>
+<li>缺点：需要消耗大量的CPU资源</li>
+</ul>
+<p>#####OC在定义属性时有nonatomic和atomic两种选择</p>
+<ul>
+<li>atomic：原子属性，为setter方法加锁（默认就是atomic）</li>
+<li>nonatomic：非原子属性，不会为setter方法加锁</li>
+</ul>
+<p>#####nonatomic和atomic对比</p>
+<ul>
+<li>atomic：线程安全，需要消耗大量的资源</li>
+<li>nonatomic：非线程安全，适合内存小的移动设备</li>
+</ul>
+<p>####线程间通信常用方法</p>
+<ul>
+<li>(void)performSelectorOnMainThread:(SEL)aSelector withObject:(id)arg waitUntilDone:(BOOL)wait;</li>
+<li>(void)performSelector:(SEL)aSelector onThread:(NSThread *)thr withObject:(id)arg waitUntilDone:(BOOL)wait;</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/09/12/NSThread140917/" data-id="cirn1o0us0000grh5o5ycw1ol" class="article-share-link">Delen</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/09/13/对GCD的学习笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          对GCD的学习笔记
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/1/">1</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/1/" style="font-size: 10px;">1</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/12/13/xcode7开发注意点和记录/">对GCD的学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2015/07/06/git/">GIT常用语法</a>
+          </li>
+        
+          <li>
+            <a href="/2014/09/13/对GCD的学习笔记/">对GCD的学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2014/09/12/NSThread140917/">多线程之NSThread</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 陶铁明<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

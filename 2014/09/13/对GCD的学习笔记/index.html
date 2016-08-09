@@ -3,17 +3,57 @@
 <head>
   <meta charset="utf-8">
   
-  <title>陶铁明</title>
+  <title>对GCD的学习笔记 | 陶铁明</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="共享技术 思考人生 吹吹牛逼">
-<meta property="og:type" content="website">
-<meta property="og:title" content="陶铁明">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="###GCD
+####GCD中有2个核心概念
+
+任务：执行什么操作
+队列：用来存放任务
+GCD会自动将队列中的任务取出，放到对应的线程中执行
+任务的取出遵循队列的FIFO原则：先进先出，后进后出
+
+
+####GCD中有2个用来执行任务的常用函数
+
+用同步的方式执行任务
+dispatch_sync(dispatch_queue_t queue, dispatch_block_t block);
+qu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对GCD的学习笔记">
+<meta property="og:url" content="http://yoursite.com/2014/09/13/对GCD的学习笔记/index.html">
 <meta property="og:site_name" content="陶铁明">
-<meta property="og:description" content="共享技术 思考人生 吹吹牛逼">
+<meta property="og:description" content="###GCD
+####GCD中有2个核心概念
+
+任务：执行什么操作
+队列：用来存放任务
+GCD会自动将队列中的任务取出，放到对应的线程中执行
+任务的取出遵循队列的FIFO原则：先进先出，后进后出
+
+
+####GCD中有2个用来执行任务的常用函数
+
+用同步的方式执行任务
+dispatch_sync(dispatch_queue_t queue, dispatch_block_t block);
+qu">
+<meta property="og:updated_time" content="2016-07-13T01:28:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="陶铁明">
-<meta name="twitter:description" content="共享技术 思考人生 吹吹牛逼">
+<meta name="twitter:title" content="对GCD的学习笔记">
+<meta name="twitter:description" content="###GCD
+####GCD中有2个核心概念
+
+任务：执行什么操作
+队列：用来存放任务
+GCD会自动将队列中的任务取出，放到对应的线程中执行
+任务的取出遵循队列的FIFO原则：先进先出，后进后出
+
+
+####GCD中有2个用来执行任务的常用函数
+
+用同步的方式执行任务
+dispatch_sync(dispatch_queue_t queue, dispatch_block_t block);
+qu">
   
     <link rel="alternate" href="/atom.xml" title="陶铁明" type="application/atom+xml">
   
@@ -66,115 +106,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-xcode7开发注意点和记录" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/13/xcode7开发注意点和记录/" class="article-date">
-  <time datetime="2015-12-13T01:50:57.000Z" itemprop="datePublished">2015-12-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/13/xcode7开发注意点和记录/">对GCD的学习笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>###Prefix Header 文件</p>
-<ul>
-<li>在xcode7中 pch文件需要在工程中配置才可以使用 在build seting<br>中找到Precompile Prefix Header 都设置为YES 然后 加上pch文件的路径 $(SRCROOT)/工程名/pch文件名 就ok</li>
-</ul>
-<p>###第三方授权登录<br>App Transport Security has blocked a cleartext HTTP (http://) resource load since it is insecure. Temporary exceptions can be configured via your app’s Info.plist file.  错误<br>解决方info 中右击Bundle OS Type code  -&gt;add row -&gt;select<br> APP Transport Security Seting 再添加两个选项设置 Allow Arbitrary Loads 为YES</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/13/xcode7开发注意点和记录/" data-id="cirn1o0vc0004grh5ncx3szxl" class="article-share-link">Delen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-git" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/07/06/git/" class="article-date">
-  <time datetime="2015-07-06T10:08:11.000Z" itemprop="datePublished">2015-07-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/06/git/">GIT常用语法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#GIT 笔记 by 陶铁明</p>
-<p>####克隆下来一个 仓库 并且重新命名文件<br>“git clone <a href="https://github.com/libgit2/libgit2" target="_blank" rel="external">https://github.com/libgit2/libgit2</a> mylibgit”</p>
-<h4 id="git-查看已经暂存的-区别"><a href="#git-查看已经暂存的-区别" class="headerlink" title="git 查看已经暂存的 区别"></a>git 查看已经暂存的 区别</h4><p>git diff –cached  git diff 查看为暂存的区别</p>
-<h4 id="git-提交"><a href="#git-提交" class="headerlink" title="git 提交"></a>git 提交</h4><p>git commit -a “全部添加” git commit -m “跳过些信息”</p>
-<h4 id="git-提交信息修改"><a href="#git-提交信息修改" class="headerlink" title="git 提交信息修改"></a>git 提交信息修改</h4><p>git commit –amend </p>
-<p>####撤销对某文件的提交<br>git reset HEAD fileName</p>
-<h4 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h4><p>git checkout filepath</p>
-<h4 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h4><p>git remote add <shortname> <url></url></shortname></p>
-<p>####添加标签 打标签<br>git tag -a v1.4 -m ‘my version 1.4</p>
-<p>####查看某个版本的具体附加信息<br>git show tagversion</p>
-<p>####单个推送标签<br>git push origin version </p>
-<p>####推送多个标签<br>git push origin –tags</p>
-<p>####新建一个版本分支<br>git checkout -b [branchname] [tagname]</p>
-<p>####配置全局的简写<br>git config –global alias.co checkout</p>
-<p>git config –global alias.gst ‘git status’</p>
-<p>####设置对应的远程分支<br>git branch –set-upstream-to ［远程分支］ ［本地分支］</p>
-<p>####查看本地与远程对应的分支<br>git branch -vv</p>
-<p>####查看分支详情<br>git branch -v</p>
-<p>####查看远程分支<br>git branch -r</p>
-<p>####推送本地分支到远程分支<br>git push origin localName</p>
-<p>####推送本地内容到远程<br>git push origin master （省略了<dst>，等价于“git push origin master:master”）</dst></p>
-<p>git push origin master:develop 推送到远程origin 当前master分支 远程develop分支</p>
-<p>git push origin HEAD:origin/develop1.0.1 HEAD指向当前工作分支  比较准确</p>
-<p>git push origin develop1.0.1:develop1.0.1</p>
-<p>空格冒号需要注意</p>
-<p>####删除远程分支<br>git push origin :dvelop1.0.1<br>远离就是推送一个空的分支到远程就是删除</p>
-<p>####拉取远程分支 并且合并到当前分支<br>git pull origin name</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/07/06/git/" data-id="cirn1o0uz0001grh56avadidg" class="article-share-link">Delen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/1/">1</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-对GCD的学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-对GCD的学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/09/13/对GCD的学习笔记/" class="article-date">
   <time datetime="2014-09-13T01:50:57.000Z" itemprop="datePublished">2014-09-13</time>
@@ -187,8 +119,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/09/13/对GCD的学习笔记/">对GCD的学习笔记</a>
+    <h1 class="article-title" itemprop="name">
+      对GCD的学习笔记
     </h1>
   
 
@@ -287,107 +219,28 @@ dispatch_async(dispatch_get_main_queue(), ^{
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-NSThread140917" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/09/12/NSThread140917/" class="article-date">
-  <time datetime="2014-09-12T01:46:11.000Z" itemprop="datePublished">2014-09-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2015/07/06/git/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
         
+          GIT常用语法
+        
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/09/12/NSThread140917/">多线程之NSThread</a>
-    </h1>
   
+    <a href="/2014/09/12/NSThread140917/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">多线程之NSThread</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##多线程之NSThread</p>
-<p>####一个NSThread对象就代表一条线程</p>
-<p>####创建、启动线程</p>
-<ul>
-<li>NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(run) object:nil];<br>[thread start];<br>// 线程一启动，就会在线程thread中执行self的run方法</li>
-</ul>
-<p>####主线程相关用法</p>
-<ul>
-<li>(NSThread *)mainThread; // 获得主线程</li>
-</ul>
-<ul>
-<li>(BOOL)isMainThread; // 是否为主线程</li>
-</ul>
-<ul>
-<li>(BOOL)isMainThread; // 是否为主线程</li>
-</ul>
-<ul>
-<li>[NSThread currentThread];</li>
-<li>(void)setName:(NSString *)name;</li>
-<li>(NSString *)name;</li>
-<li>(void)start;<br>// 进入就绪状态 -&gt; 运行状态。当线程任务执行完毕，自动进入死亡状态<br>阻塞（暂停）线程</li>
-</ul>
-<ul>
-<li>(void)sleepUntilDate:(NSDate *)date;</li>
-<li>(void)sleepForTimeInterval:(NSTimeInterval)ti;<br>// 进入阻塞状态</li>
-</ul>
-<p>强制停止线程</p>
-<ul>
-<li>(void)exit;<br>// 进入死亡状态</li>
-</ul>
-<p>####创建线程的几种方式</p>
-<ul>
-<li><p>创建线程后自动启动线程<br>[NSThread detachNewThreadSelector:@selector(run) toTarget:self withObject:nil];</p>
-</li>
-<li><p>隐式创建并启动线程<br>[self performSelectorInBackground:@selector(run) withObject:nil];</p>
-<pre><code>上述2种创建线程方式的优缺点
-优点：简单快捷
-缺点：无法对线程进行更详细的设置
-</code></pre></li>
-</ul>
-<p>####线程安全问题<br>@synchronized(锁对象) { // 需要锁定的代码  }<br>注意：锁定1份代码只用1把锁，用多把锁是无效的</p>
-<p>#####互斥锁的优缺点</p>
-<ul>
-<li>优点：能有效防止因多线程抢夺资源造成的数据安全问题</li>
-<li>缺点：需要消耗大量的CPU资源</li>
-</ul>
-<p>#####OC在定义属性时有nonatomic和atomic两种选择</p>
-<ul>
-<li>atomic：原子属性，为setter方法加锁（默认就是atomic）</li>
-<li>nonatomic：非原子属性，不会为setter方法加锁</li>
-</ul>
-<p>#####nonatomic和atomic对比</p>
-<ul>
-<li>atomic：线程安全，需要消耗大量的资源</li>
-<li>nonatomic：非线程安全，适合内存小的移动设备</li>
-</ul>
-<p>####线程间通信常用方法</p>
-<ul>
-<li>(void)performSelectorOnMainThread:(SEL)aSelector withObject:(id)arg waitUntilDone:(BOOL)wait;</li>
-<li>(void)performSelector:(SEL)aSelector onThread:(NSThread *)thr withObject:(id)arg waitUntilDone:(BOOL)wait;</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/09/12/NSThread140917/" data-id="cirn1o0us0000grh5o5ycw1ol" class="article-share-link">Delen</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
 
 </section>
         
