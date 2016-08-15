@@ -57,7 +57,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Søk"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -67,6 +67,107 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-有土鳖服务器字段" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/15/有土鳖服务器字段/" class="article-date">
+  <time datetime="2016-08-15T00:08:11.000Z" itemprop="datePublished">2016-08-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/15/有土鳖服务器字段/">有土鳖服务器字段</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="有土鳖-项目-用户模块"><a href="#有土鳖-项目-用户模块" class="headerlink" title="有土鳖 项目 用户模块"></a>有土鳖 项目 用户模块</h1><ul>
+<li>用户支持 第三方登录 在服务器保存第三方登录的 token 数据 </li>
+<li>用户唯一识别 ：uid ()</li>
+<li>用户密码：pwd</li>
+<li>性别：sex</li>
+<li>用户名：nickname</li>
+<li>邮箱 ：mail </li>
+<li>token:</li>
+<li>loginType:</li>
+</ul>
+<p>##用户四大模块</p>
+<ul>
+<li><p>登录注册 </p>
+<pre><code>第三方登录
+－ 微信，微博
+  服务端主要保存好从第三方返回的token参数 和nickname  没有密码登陆 如果设置密码登陆
+  则需要绑定邮箱
+－ 邮箱登陆
+ 刚开始 只要保存就可以注册的时候，无需验证 后期可以修改邮箱 
+</code></pre></li>
+<li><p>收藏模块</p>
+</li>
+<li>评论模块  （每个视频下方都会有 评论模块 ）</li>
+</ul>
+<p>#视频首页列表<br>  参数：</p>
+<ul>
+<li>视频图片地址:iconUrl</li>
+<li>视频播放地址:videoPlayUrl</li>
+<li>视频uid:videoId</li>
+<li>视频title:videoTitle</li>
+<li>视频点击次数:videoTypeNum</li>
+<li>视频关键字 :videosearchkey (根据)</li>
+<li>视屏类型:videotype </li>
+<li>视屏时长:videoTime</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/08/15/有土鳖服务器字段/" data-id="cirvmlxds0000z6h5kvrxk0x5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/1/">1</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-jspatch" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/09/jspatch/" class="article-date">
+  <time datetime="2016-08-09T07:08:36.000Z" itemprop="datePublished">2016-08-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#JSPatch</p>
+<p>#####原理<br>       JSPatch 能做到通过 JS 调用和改写 OC 方法最根本的原因是 Objective-C 是动态语言 Objective-C 是动态语言，OC 上所有方法的调用/类的生成都通过 Objective-C Runtime 在运行时进行，我们可以通过类名/方法名反射得到相应的类和方法</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/08/09/jspatch/" data-id="cirvmlxe10001z6h5ifr658d9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-xcode7开发注意点和记录" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -417,9 +518,9 @@ dispatch_async(dispatch_get_main_queue(), ^{
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Arkiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li></ul>
     </div>
   </div>
 
@@ -427,9 +528,17 @@ dispatch_async(dispatch_get_main_queue(), ^{
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Siste innlegg</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/08/15/有土鳖服务器字段/">有土鳖服务器字段</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/09/jspatch/">(no title)</a>
+          </li>
         
           <li>
             <a href="/2015/12/13/xcode7开发注意点和记录/">xcode7开发注意点和记录</a>
@@ -441,10 +550,6 @@ dispatch_async(dispatch_get_main_queue(), ^{
         
           <li>
             <a href="/2014/09/13/对GCD的学习笔记/">对GCD的学习笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2014/09/12/NSThread140917/">多线程之NSThread</a>
           </li>
         
       </ul>
