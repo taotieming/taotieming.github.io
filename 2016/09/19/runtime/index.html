@@ -3,54 +3,42 @@
 <head>
   <meta charset="utf-8">
   
-  <title>有土鳖服务器字段 | 陶铁明</title>
+  <title>RunTime 动态消息机制 | 陶铁明</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="有土鳖 项目 用户模块##用户
+  <meta name="description" content="##什么是RunTime机制 
 
-登录注册 
-注册 发送字段
-－ 邮箱号：本地做判断 格式是否正确  直接设置密码 就可以登录
-字段：邮箱字段：umail
-     密码字段：upwd
-     重复密码：urepwd
-
- 返回字段： 用户的uid  后期根据用户的uid 去拉去相应的数据
-           code = 0 表示成功 其他表示失败
-
-－ 邮箱登陆 同注册成功一样  登录成功">
+oc在编译的时是不知道调用哪个函数，运行时找不到就报错 
+C语言在编译的时候就知道调用哪个方法
+[p eat]
+消息机制 任何方法调用 本质都是发送消息
+[p performSelector:@selector(&amp;lt;#selector#&amp;gt;)]
+ #import &amp;lt;objc/message.h&amp;gt; 倒入运行时框架
+运行时发送消息 谁做事情就去调用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="有土鳖服务器字段">
-<meta property="og:url" content="http://yoursite.com/2016/08/15/有土鳖服务器字段/index.html">
+<meta property="og:title" content="RunTime 动态消息机制">
+<meta property="og:url" content="http://yoursite.com/2016/09/19/runtime/index.html">
 <meta property="og:site_name" content="陶铁明">
-<meta property="og:description" content="有土鳖 项目 用户模块##用户
+<meta property="og:description" content="##什么是RunTime机制 
 
-登录注册 
-注册 发送字段
-－ 邮箱号：本地做判断 格式是否正确  直接设置密码 就可以登录
-字段：邮箱字段：umail
-     密码字段：upwd
-     重复密码：urepwd
-
- 返回字段： 用户的uid  后期根据用户的uid 去拉去相应的数据
-           code = 0 表示成功 其他表示失败
-
-－ 邮箱登陆 同注册成功一样  登录成功">
-<meta property="og:updated_time" content="2016-08-22T07:32:09.000Z">
+oc在编译的时是不知道调用哪个函数，运行时找不到就报错 
+C语言在编译的时候就知道调用哪个方法
+[p eat]
+消息机制 任何方法调用 本质都是发送消息
+[p performSelector:@selector(&amp;lt;#selector#&amp;gt;)]
+ #import &amp;lt;objc/message.h&amp;gt; 倒入运行时框架
+运行时发送消息 谁做事情就去调用">
+<meta property="og:updated_time" content="2016-09-18T16:40:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="有土鳖服务器字段">
-<meta name="twitter:description" content="有土鳖 项目 用户模块##用户
+<meta name="twitter:title" content="RunTime 动态消息机制">
+<meta name="twitter:description" content="##什么是RunTime机制 
 
-登录注册 
-注册 发送字段
-－ 邮箱号：本地做判断 格式是否正确  直接设置密码 就可以登录
-字段：邮箱字段：umail
-     密码字段：upwd
-     重复密码：urepwd
-
- 返回字段： 用户的uid  后期根据用户的uid 去拉去相应的数据
-           code = 0 表示成功 其他表示失败
-
-－ 邮箱登陆 同注册成功一样  登录成功">
+oc在编译的时是不知道调用哪个函数，运行时找不到就报错 
+C语言在编译的时候就知道调用哪个方法
+[p eat]
+消息机制 任何方法调用 本质都是发送消息
+[p performSelector:@selector(&amp;lt;#selector#&amp;gt;)]
+ #import &amp;lt;objc/message.h&amp;gt; 倒入运行时框架
+运行时发送消息 谁做事情就去调用">
   
     <link rel="alternate" href="/atom.xml" title="陶铁明" type="application/atom+xml">
   
@@ -103,10 +91,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-有土鳖服务器字段" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-runtime" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/08/15/有土鳖服务器字段/" class="article-date">
-  <time datetime="2016-08-15T00:08:11.000Z" itemprop="datePublished">2016-08-15</time>
+    <a href="/2016/09/19/runtime/" class="article-date">
+  <time datetime="2016-09-18T18:50:57.000Z" itemprop="datePublished">2016-09-19</time>
 </a>
     
   </div>
@@ -117,7 +105,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      有土鳖服务器字段
+      RunTime 动态消息机制
     </h1>
   
 
@@ -125,80 +113,78 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="有土鳖-项目-用户模块"><a href="#有土鳖-项目-用户模块" class="headerlink" title="有土鳖 项目 用户模块"></a>有土鳖 项目 用户模块</h1><p>##用户</p>
+        <p>##什么是RunTime机制 </p>
 <ul>
-<li><p>登录注册 </p>
-<pre><code>注册 发送字段
-－ 邮箱号：本地做判断 格式是否正确  直接设置密码 就可以登录
-字段：邮箱字段：umail
-     密码字段：upwd
-     重复密码：urepwd
-
- 返回字段： 用户的uid  后期根据用户的uid 去拉去相应的数据
-           code = 0 表示成功 其他表示失败
-
-－ 邮箱登陆 同注册成功一样  登录成功 返回uid 和 
-刚开始 只要保存就可以注册的时候，无需验证 后期可以修改邮箱 
-在设置的时候 需要保存的用户字段
- - 用户唯一识别 ：uid ()
- - 用户密码：pwd
- - 性别：sex
- - 用户名：nickname
- - 邮箱 ：mail 
+<li>oc在编译的时是不知道调用哪个函数，运行时找不到就报错 </li>
+<li><p>C语言在编译的时候就知道调用哪个方法</p>
+<pre><code>[p eat]
+消息机制 任何方法调用 本质都是发送消息
+[p performSelector:@selector(&lt;#selector#&gt;)]
+ #import &lt;objc/message.h&gt; 倒入运行时框架
+运行时发送消息 谁做事情就去调用谁 xcode5以后 不给底层的方法让开发者调用
+调用类方法 其实 就是变成一个类对象  本质 类名转换成类对象  
+</code></pre><ul>
+<li>分类没有父类<br>重写系统自带的方法 扩展 有一点不好的地方就是 到处导入头文件 很臃肿<br>(IMP方法的实现)</li>
+</ul>
+</li>
+</ul>
+<p>###利用runtime 交换方法的实现<br>    +(void)load{<br>        Method  imageName = class_getClassMethod([UIImage class], @selector(imageNamed:));<br>        method_exchangeImplementations(imageName, ttmIimge);<br>        Method ttmIimge  = class_getClassMethod([UIImage class], @selector(ttm_imagenamed:))<br>    }</p>
+<p>###动态添加方法</p>
+<ul>
+<li>性能上的优化  可以用到的时候再加载 </li>
+<li><p>当一个方法没有实现 但是又调用了这个方法 就会调用resolveInstanceMethod这个方法</p>
+<p>  +(BOOL)resolveInstanceMethod:(SEL)sel{</p>
+<pre><code>if ([NSStringFromSelector(sel) isEqualToString:@&quot;eat&quot;]) {
+    /**
+     *  &lt;#Description#&gt;
+     *
+     *  @param cls#&gt;   给那个类 description#&gt;
+     *  @param name#&gt;  添加方法的编号 description#&gt;
+     *  @param imp#&gt;   方法实现 入口 函数名 description#&gt;
+     *  @param types#&gt; 方法类型 description#&gt;
+     *
+     *  @return &lt;#return value description#&gt;
+     */
+class_addMethod([self class], @selector(resolveThisMethodDynamically), (IMP) myMethodIMP, &quot;v@:&quot;);
+}
+}    +(BOOL)resolveClassMethod:(SEL)sel{}
 </code></pre></li>
 </ul>
-<p>#视频<br>         视频这是主要模块 会出现在首页列表 详情播放 搜索 都会出现，每个视屏还会对应着评论 ，还有一些观看次数，评论次数 点赞次数，</p>
+<p>###动态添加属性  </p>
 <ul>
-<li>视频图片地址:iconUrl</li>
-<li>视频播放地址:videoPlayUrl</li>
-<li>视频uid:videoId</li>
-<li>视频title:videoTitle</li>
-<li>视频点击次数:videoTypeNum</li>
-<li>视频关键字 :videosearchkey (根据)</li>
-<li>视屏类型:videotype </li>
-<li>视屏时长:videoTime  </li>
-</ul>
-<p>#评论<br>更具视屏的 uid 去获取 该视频的评论</p>
-<ul>
-<li><p>一条评论  </p>
-<pre><code>评论 评论的人名—（uid）  评论的时间 该评论的点赞次数 评论的内容
-－ commentName
-－ commentuid
-- commentTime
-- commetliketime
-- commentContent 
+<li>给对象产生一种关联  而不是真的增加代码区别于动态增加方法</li>
+<li><p>给nsobject 增加一个属性 </p>
+<pre><code>/**
+    跟对象产生一个关联属性
+ *
+ *  @param object#&gt; 要产生管理的属性 description#&gt;
+ *  @param key#&gt;    属性名字 description#&gt;
+ *  @param value#&gt;  属性的值 description#&gt;
+ *  @param policy#&gt; 策略 就是 strong之类的 description#&gt;
+ *
+ *  @return
+ */
+objc_setAssociatedObject(&lt;#id object#&gt;, &lt;#const void *key#&gt;, &lt;#id value#&gt;, &lt;#objc_AssociationPolicy policy#&gt;)
+objc_getAssociatedObject(&lt;#id object#&gt;, &lt;#const void *key#&gt;)
 </code></pre></li>
 </ul>
-<p>#音乐<br>  设计师 可以提供曲子 是否 需要付费收听</p>
-<p>#服饰<br>  服饰  模式 发挥设计师的在上面 设计衣服进行售卖   一百件 均码 按销量 分成</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/15/有土鳖服务器字段/" data-id="cit8up2dr00084r9axck31fs7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/09/19/runtime/" data-id="cit8up2dd00054r9aesigfous" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/1/">1</a></li></ul>
-
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2016/09/12/编程思想/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          响应式，链式，函数式编程思想 ReactiveCocoa
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/08/09/jspatch/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/09/12/响应式KVO/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title"></div>
+      <div class="article-nav-title">响应式编程-KVO的实现原理</div>
     </a>
   
 </nav>
