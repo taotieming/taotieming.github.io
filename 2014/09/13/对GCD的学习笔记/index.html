@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="###GCD
+####GCD中有2个核心概念
+
+任务：执行什么操作
+队列：用来存放任务
+GCD会自动将队列中的任务取出，放到对应的线程中执行
+任务的取出遵循队列的FIFO原则：先进先出，后进后出
+
+
+####GCD中有2个用来执行任务的常用函数
+
+用同步的方式执行任务
+dispatch_sync(dispatch_queue_t queue, dispatch_block_t block);
+qu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对GCD的学习笔记">
+<meta property="og:url" content="http://yoursite.com/2014/09/13/对GCD的学习笔记/index.html">
+<meta property="og:site_name" content="陶铁明">
+<meta property="og:description" content="###GCD
+####GCD中有2个核心概念
+
+任务：执行什么操作
+队列：用来存放任务
+GCD会自动将队列中的任务取出，放到对应的线程中执行
+任务的取出遵循队列的FIFO原则：先进先出，后进后出
+
+
+####GCD中有2个用来执行任务的常用函数
+
+用同步的方式执行任务
+dispatch_sync(dispatch_queue_t queue, dispatch_block_t block);
+qu">
+<meta property="og:updated_time" content="2016-07-13T01:28:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="对GCD的学习笔记">
+<meta name="twitter:description" content="###GCD
+####GCD中有2个核心概念
+
+任务：执行什么操作
+队列：用来存放任务
+GCD会自动将队列中的任务取出，放到对应的线程中执行
+任务的取出遵循队列的FIFO原则：先进先出，后进后出
+
+
+####GCD中有2个用来执行任务的常用函数
+
+用同步的方式执行任务
+dispatch_sync(dispatch_queue_t queue, dispatch_block_t block);
+qu">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2014/09/13/对GCD的学习笔记/"/>
+
+
+
+
+
+  <title>对GCD的学习笔记 | 陶铁明</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陶铁明</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">逆向IOS IOS开发 </p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2014/09/13/对GCD的学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陶铁明">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陶铁明">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">对GCD的学习笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-09-13T09:50:57+08:00">
+                2014-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>###GCD</p>
+<p>####GCD中有2个核心概念</p>
+<ul>
+<li>任务：执行什么操作</li>
+<li><p>队列：用来存放任务</p>
+<pre><code>GCD会自动将队列中的任务取出，放到对应的线程中执行
+任务的取出遵循队列的FIFO原则：先进先出，后进后出
+</code></pre></li>
+</ul>
+<p>####GCD中有2个用来执行任务的常用函数</p>
+<ul>
+<li><p>用同步的方式执行任务</p>
+<pre><code>dispatch_sync(dispatch_queue_t queue, dispatch_block_t block);
+queue：队列
+block：任务
+</code></pre></li>
+<li><p>用异步的方式执行任务</p>
+<pre><code>dispatch_async(dispatch_queue_t queue, dispatch_block_t block);
+</code></pre></li>
+</ul>
+<p>####同步和异步的区别</p>
+<ul>
+<li>同步：只能在当前线程中执行任务，不具备开启新线程的能力</li>
+<li>异步：可以在新的线程中执行任务，具备开启新线程的能力</li>
+</ul>
+<p>####GCD中还有个用来执行任务的函数：</p>
+<pre><code>dispatch_barrier_async(dispatch_queue_t queue, dispatch_block_t block);
+在前面的任务执行结束后它才执行，而且它后面的任务等它执行完成之后才会执行
+这个queue不能是全局的并发队列
+</code></pre><p>####GCD的队列可以分为2大队列</p>
+<ul>
+<li><p>并发队列（Concurrent Dispatch Queue）<br>可以让多个任务并发（同时）执行（自动开启多个线程同时执行任务）<br>并发功能只有在异步（dispatch_async）函数下才有效</p>
+</li>
+<li><p>串行队列（Serial Dispatch Queue）<br>让任务一个接着一个地执行（一个任务执行完毕后，再执行下一个任务）</p>
+</li>
+</ul>
+<p>使用dispatch_queue_create函数创建队列<br>dispatch_queue_t<br>dispatch_queue_create(const char *label, // 队列名称<br>dispatch_queue_attr_t attr); // 队列的类型</p>
+<p>#####创建并发队列<br>dispatch_queue_t queue = dispatch_queue_create(“com.520it.queue”, DISPATCH_QUEUE_CONCURRENT);</p>
+<p>####GCD默认已经提供了全局的并发队列，供整个应用使用，可以无需手动创建<br>使用dispatch_get_global_queue函数获得全局的并发队列<br>dispatch_queue_t dispatch_get_global_queue(<br>dispatch_queue_priority_t priority, // 队列的优先级<br>unsigned long flags); // 此参数暂时无用，用0即可</p>
+<p>#####获得全局并发队列<br>dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0); </p>
+<p>#####全局并发队列的优先级</p>
+<ul>
+<li>DISPATCH_QUEUE_PRIORITY_HIGH 2 // 高</li>
+<li>DISPATCH_QUEUE_PRIORITY_DEFAULT 0 // 默认（中）</li>
+<li>DISPATCH_QUEUE_PRIORITY_LOW (-2) // 低</li>
+<li>DISPATCH_QUEUE_PRIORITY_BACKGROUND INT16_MIN // 后台</li>
+</ul>
+<p>####GCD中获得串行有2种途径<br>使用dispatch_queue_create函数创建串行队列<br>// 创建串行队列（队列类型传递NULL或者DISPATCH_QUEUE_SERIAL）</p>
+<ul>
+<li>dispatch_queue_t queue = dispatch_queue_create(“com.520it.queue”, NULL); </li>
+</ul>
+<p>######使用主队列（跟主线程相关联的队列）<br>主队列是GCD自带的一种特殊的串行队列<br>放在主队列中的任务，都会放到主线程中执行<br>使用dispatch_get_main_queue()获得主队列<br>dispatch_queue_t queue = dispatch_get_main_queue();</p>
+<ul>
+<li><p>从子线程回到主线程</p>
+<pre><code>dispatch_async(
+dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+// 执行耗时的异步操作...
+dispatch_async(dispatch_get_main_queue(), ^{
+// 回到主线程，执行UI刷新操作
+});
+});
+</code></pre></li>
+</ul>
+<p>######iOS常见的延时执行</p>
+<ul>
+<li><p>调用NSObject的方法</p>
+<pre><code>[self performSelector:@selector(run) withObject:nil afterDelay:2.0];
+// 2秒后再调用self的run方法
+</code></pre></li>
+<li><p>使用GCD函数</p>
+<pre><code>dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+// 2秒后执行这里的代码...
+});
+</code></pre></li>
+<li><p>使用NSTimer</p>
+<pre><code>[NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(test) userInfo:nil repeats:NO];
+</code></pre></li>
+</ul>
+<p>#####执行1次<br>static dispatch_once_t onceToken;<br>dispatch_once(&amp;onceToken, ^{<br>    // 只执行1次的代码(这里面默认是线程安全的)<br>});</p>
+<p>#####使用dispatch_apply函数能进行快速迭代遍历<br>dispatch_apply(10, dispatch_get_global_queue(0, 0), ^(size_t index){<br>    // 执行10次代码，index顺序不确定<br>});</p>
+<p>####队列组<br>    dispatch_group_t group =  dispatch_group_create();<br>    dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{<br>    // 执行1个耗时的异步操作<br>    });<br>    dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{<br>    // 执行1个耗时的异步操作<br>    });<br>    dispatch_group_notify(group, dispatch_get_main_queue(), ^{<br>    // 等前面的异步操作都执行完毕后，回到主线程…<br>    });</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/09/12/NSThread140917/" rel="next" title="多线程之NSThread">
+                <i class="fa fa-chevron-left"></i> 多线程之NSThread
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/07/06/git/" rel="prev" title="GIT常用语法">
+                GIT常用语法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">陶铁明</p>
+              <p class="site-description motion-element" itemprop="description">共享技术 思考人生 吹吹牛逼</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">Tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陶铁明</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
